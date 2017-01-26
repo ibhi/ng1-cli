@@ -7,6 +7,7 @@ const replace = require('./lib/replace-name');
 const createJs = require('./lib/create-js');
 const createHtml = require('./lib/create-html');
 const createStyle = require('./lib/create-style');
+const chalk = require('chalk');
 
 program
   .option('-m, --module <name>', 'Module name of the angular app')
@@ -24,6 +25,10 @@ program.action(() => {
     if(program.folder) {
       mkdirp(program.folder, (err, folderPath) => {
         if(err) process.exit(1);
+        if(!folderPath) {
+          console.log(chalk.red('Folder with the same name already exists'));
+          process.exit(1);
+        }
         createJs(name, './templates/component/component.js', folderPath, 'component');
         createHtml(name, './templates/component/component.html', folderPath, 'component');
         createStyle(name, './templates/component/component.css', folderPath, 'component');
@@ -37,5 +42,3 @@ program.action(() => {
 });
 
 program.parse(process.argv);
-
-const replaceName = (find, replace, content) => content.replace(new RegExp(find, 'gi'), replace);

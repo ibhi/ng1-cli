@@ -17,6 +17,7 @@
   "author": "ibhi",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1"
