@@ -4,9 +4,9 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const createFile = require('./lib/create-file');
 const replace = require('./lib/replace-name');
-const createJs = require('./lib/create-js');
-const createHtml = require('./lib/create-html');
-const createStyle = require('./lib/create-style');
+// const createJs = require('./lib/create-js');
+// const createHtml = require('./lib/create-html');
+// const createStyle = require('./lib/create-style');
 const chalk = require('chalk');
 
 program
@@ -29,9 +29,9 @@ program.action(() => {
           console.log(chalk.red('Folder with the same name already exists'));
           process.exit(1);
         }
-        createJs(name, './templates/component/component.js', folderPath, 'component');
-        createHtml(name, './templates/component/component.html', folderPath, 'component');
-        createStyle(name, './templates/component/component.css', folderPath, 'component');
+        createFile(name, './templates/component/component.js', folderPath, 'component', '.js');
+        createFile(name, './templates/component/component.html', folderPath, 'component', '.html');
+        createFile(name, './templates/component/component.css', folderPath, 'component', '.css');
       })
     } else {
       createJs(name, './templates/component/component.js', path.resolve(process.cwd()), 'component');
