@@ -1,0 +1,24 @@
+{
+  "name": "ng1-cli",
+  "version": "0.0.1",
+  "description": "CLI for generating angular 1  module, components, directives, filters etc,.",
+  "main": "index.js",
+  "bin": {
+    "ng1": "index.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "angular1",
+    "cli",
+    "angularjs-cli"
+  ],
+  "author": "ibhi",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1"
+  }
+}
