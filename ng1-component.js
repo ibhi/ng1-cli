@@ -11,7 +11,7 @@ const chalk = require('chalk');
 
 program
   .option('-m, --module <name>', 'Module name of the angular app')
-  .option('-f, --folder <name>', 'Create a new folder');
+  .option('-f, --folder', 'Create a new folder');
 
 program.action(() => {
   let name;
@@ -23,7 +23,7 @@ program.action(() => {
   }
   if(name) {
     if(program.folder) {
-      mkdirp(program.folder, (err, folderPath) => {
+      mkdirp(name, (err, folderPath) => {
         if(err) process.exit(1);
         if(!folderPath) {
           console.log(chalk.red('Folder with the same name already exists'));
@@ -34,9 +34,9 @@ program.action(() => {
         createFile(name, './templates/component/component.css', folderPath, 'component', '.css');
       })
     } else {
-      createJs(name, './templates/component/component.js', path.resolve(process.cwd()), 'component');
-      createHtml(name, './templates/component/component.html', path.resolve(process.cwd()), 'component');
-      createStyle(name, './templates/component/component.css', path.resolve(process.cwd()), 'component');
+      createFile(name, './templates/component/component.js', path.resolve(process.cwd()), 'component', '.js');
+      createFile(name, './templates/component/component.html', path.resolve(process.cwd()), 'component', '.html');
+      createFile(name, './templates/component/component.css', path.resolve(process.cwd()), 'component', '.css');
     }
   }
 });
